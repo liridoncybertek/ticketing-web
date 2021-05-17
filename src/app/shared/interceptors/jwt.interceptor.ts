@@ -19,8 +19,6 @@ export class JwtInterceptor implements HttpInterceptor {
     const tokenService = this.tokenService;
 
     if (!tokenService.isTokenExpired()) {
-      console.log('here we go;');
-
       request = request.clone({
         setHeaders: {
           Authorization: tokenService.getToken()

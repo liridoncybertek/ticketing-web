@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {AuthGuard} from './shared/services/auth.guard';
+
+import {PageNotAllowedComponent} from './page-not-allowed/page-not-allowed.component';
 
 const routes: Routes = [
   {
@@ -8,7 +11,12 @@ const routes: Routes = [
   },
   {
     path: 'member',
-    loadChildren: () => import('./member/member.module').then(m => m.MemberModule)
+    loadChildren: () => import('./member/member.module').then(m => m.MemberModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'page-not-allowed',
+    component: PageNotAllowedComponent
   },
   {
     path: '',
@@ -21,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

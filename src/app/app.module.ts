@@ -6,10 +6,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {JwtInterceptor} from './shared/interceptors/jwt.interceptor';
+import { PageNotAllowedComponent } from './page-not-allowed/page-not-allowed.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotAllowedComponent
   ],
   imports: [
     BrowserModule,

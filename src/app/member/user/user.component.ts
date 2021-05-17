@@ -21,7 +21,6 @@ export class UserComponent implements OnInit {
   readUser(): void {
     const currentUser = this.tokenService.getUserFromToken();
     this.userService.readByUsername(currentUser.userName).subscribe(response => {
-      console.log(response);
     });
   }
 
