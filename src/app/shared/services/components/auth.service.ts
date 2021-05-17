@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {GatewayService} from './gateway.service';
-import {AuthenticationRequest} from '../models/authenticationRequest';
+import {GatewayService} from '../general/gateway.service';
+import {AuthenticationRequest} from '../../models/authenticationRequest';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {TokenService} from './token.service';
-import {Constants} from '../constants/constants';
+import {TokenService} from '../general/token.service';
+import {Constants} from '../../constants/constants';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {AuthGuard} from './shared/services/auth.guard';
+import {AuthGuard} from './shared/services/guards/auth.guard';
 
 import {PageNotAllowedComponent} from './page-not-allowed/page-not-allowed.component';
 

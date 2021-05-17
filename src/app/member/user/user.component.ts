@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Response} from '../../shared/models/response';
 import {User} from '../../shared/models/user';
-import {UserService} from '../../shared/services/user.service';
-import {TokenService} from '../../shared/services/token.service';
+import {UserService} from '../../shared/services/components/user.service';
+import {TokenService} from '../../shared/services/general/token.service';
 
 @Component({
   selector: 'app-user',
@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
     this.readUser();
   }
 
+  //TODO: move from here!!!
   readUser(): void {
     const currentUser = this.tokenService.getUserFromToken();
     this.userService.readByUsername(currentUser.userName).subscribe(response => {

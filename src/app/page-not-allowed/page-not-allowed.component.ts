@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {TokenService} from '../shared/services/token.service';
+import {TokenService} from '../shared/services/general/token.service';
 
 @Component({
   selector: 'app-page-not-allowed',

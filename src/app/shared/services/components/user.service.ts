@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {GatewayService} from './gateway.service';
+import {GatewayService} from '../general/gateway.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

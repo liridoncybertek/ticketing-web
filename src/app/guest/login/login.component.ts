@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
-import {AuthService} from '../../shared/services/auth.service';
+import {AuthService} from '../../shared/services/components/auth.service';
 import {AuthenticationRequest} from '../../shared/models/authenticationRequest';
-import {TokenService} from '../../shared/services/token.service';
+import {TokenService} from '../../shared/services/general/token.service';
 import {Router} from '@angular/router';
 
 @Component({

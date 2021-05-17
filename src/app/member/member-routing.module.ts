@@ -4,12 +4,12 @@ import {MemberComponent} from './member.component';
 import {ProjectComponent} from './project/project.component';
 import {TaskComponent} from './task/task.component';
 import {UserComponent} from './user/user.component';
-import {RoleGuard} from '../shared/services/role.guard';
+import {RoleGuard} from '../shared/services/guards/role.guard';
 import {ProjectFormComponent} from './project/projet-form/project-form.component';
 import {ProjectDetailsComponent} from './project/project-details/project-details.component';
 import {TaskFormComponent} from './task/task-form/task-form.component';
 import {UserFormComponent} from './user/user-form/user-form.component';
-import {AuthGuard} from '../shared/services/auth.guard';
+import {AuthGuard} from '../shared/services/guards/auth.guard';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
 
 const routes: Routes = [
