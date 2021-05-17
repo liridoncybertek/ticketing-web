@@ -6,10 +6,12 @@ import { MemberComponent } from './member.component';
 import { ProjectComponent } from './project/project.component';
 import { TaskComponent } from './task/task.component';
 import { UserComponent } from './user/user.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 
 @NgModule({
-  declarations: [MemberComponent, ProjectComponent, TaskComponent, UserComponent],
+  declarations: [MemberComponent, ProjectComponent, TaskComponent, UserComponent, UserFormComponent, UserDetailsComponent],
   imports: [
     CommonModule,
     MemberRoutingModule

@@ -18,11 +18,11 @@ export class AuthService {
 
     const request = {
       path: '/authenticate',
-      body: user
+      body: user,
+      options: {skipToken: true}
     };
 
     return this.gatewayService.create(request).pipe(map(response => {
-      console.log('respnse is: ', response);
       if (response.success) {
         this.tokenService.setToken(Constants.ACCESS_TOKEN, response.data);
       }

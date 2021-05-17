@@ -15,31 +15,21 @@ export class GatewayService<T = any> {
   constructor(private http: HttpClient) {
   }
 
-  create({path, body, queryParams}: Request, options?: any): Observable<Response<T> | any> {
-    const endpoint = this.appendQueryParams(`${this.endpoint}${path}`, queryParams);
+  create({path, body, options}: Request): Observable<Response<T> | any> {
+
+    const endpoint = options && options.skipToken ? `${this.endpoint}${path}` : `${this.endpoint}/${environment.api}/${environment.apiVersion}${path}`;
 
     return this.http.post<T>(endpoint, body, options);
   }
 
-  public read({path, queryParams}: Request, options?: any): Observable<Response<T> | any> {
-
-    const endpoint = this.appendQueryParams(`${this.endpoint}${path}`, queryParams);
-
+  public read({path, options}: Request): Observable<Response<T> | any> {
+    const endpoint = options && options.skipToken ? `${this.endpoint}${path}` : `${this.endpoint}/${environment.api}/${environment.apiVersion}${path}`;
     return this.http.get<T>(endpoint, options);
   }
 
-  public update({path, body, queryParams}: Request, options?: any): Observable<Response<T> | any> {
+  public update({path, body, options}: Request): Observable<Response<T> | any> {
 
-    const endpoint = this.appendQueryParams(`${this.endpoint}${path}`, queryParams);
-
-    return this.http.put<T>(endpoint, body, options);
+    return this.http.put<T>(`${this.endpoint}${path}`, body, options);
   }
 
-  private appendQueryParams(url: string, queryParams: string[] = []): string {
-    if (!queryParams.length) {
-      return url;
-    }
-
-    return url + '?' + queryParams.join('&');
-  }
 }

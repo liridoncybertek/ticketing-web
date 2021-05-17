@@ -3,6 +3,8 @@ import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../../shared/services/auth.service';
 import {AuthenticationRequest} from '../../shared/models/authenticationRequest';
+import {TokenService} from '../../shared/services/token.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router) {
     this.initForm();
   }
 
@@ -25,13 +27,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initForm();
-    this.onSubmit();
   }
 
   initForm(): void {
     this.form = new FormGroup({
-      username: new FormControl('admin@admin.com', [Validators.required]),
-      password: new FormControl('Abc1', [Validators.required])
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required])
     });
   }
 
@@ -39,10 +40,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     const user = this.form.value as AuthenticationRequest;
 
     this.subscription = this.authService.login(user).subscribe(response => {
-      //TODO: do a custom routing depends on role when we login!!!!
-      console.log('response is: ', response);
+      this.toNavigate(response.data);
     }, error => {
-      console.log('error is: ', error);
+      this.router.navigateByUrl('guest');
     });
 
   }
@@ -53,5 +53,21 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     this.login();
+  }
+
+  private toNavigate(token: string): void {
+    const roleFromToken = this.tokenService.getRoleFromToken();
+
+    switch (roleFromToken) {
+      case 'Admin':
+        this.router.navigateByUrl('/member/users');
+        break;
+      case 'Manger':
+        this.router.navigateByUrl('/member/projects');
+        break;
+      case 'Employee':
+        this.router.navigateByUrl('/member/tasks');
+        break;
+    }
   }
 }
