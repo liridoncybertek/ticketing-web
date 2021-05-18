@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../../shared/services/components/user.service';
+import {TokenService} from '../../../shared/services/general/token.service';
 
 @Component({
   selector: 'app-user-details',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.readUser();
   }
 
+
+
+  readUser(): void {
+    const currentUser = this.tokenService.getUserFromToken();
+    this.userService.readByUsername(currentUser.userName).subscribe(response => {
+    });
+  }
 }

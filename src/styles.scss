@@ -9,7 +9,26 @@ h1 {
   text-align: center;
 }
 
-.color-primary{
+.color-primary {
   background-color: #0062ff;
   color: #ffff;
+}
+
+.action-button {
+  padding: 6px 15px;
+  text-decoration: none;
+  color: #ffff;
+  border-radius: 5px;
+
+  &--edit {
+    background-color: #ffc108;
+    border-color: #ffc108;
+    margin-right: 5px;
+  }
+
+  &--delete {
+    background-color: red;
+    border-color: red;
+    margin-right: 5px;
+  }
 }

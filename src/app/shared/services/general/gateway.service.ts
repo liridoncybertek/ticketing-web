@@ -29,7 +29,8 @@ export class GatewayService<T = any> {
 
   public update({path, body, options}: Request): Observable<Response<T> | any> {
 
-    return this.http.put<T>(`${this.endpoint}${path}`, body, options);
+    const endpoint = `${this.endpoint}/${environment.api}/${environment.apiVersion}${path}`;
+    return this.http.put<T>(endpoint, body, options);
   }
 
 }

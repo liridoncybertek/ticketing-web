@@ -11,17 +11,22 @@ import {TokenService} from '../../shared/services/general/token.service';
 })
 export class UserComponent implements OnInit {
 
+  public users: User[];
+  displayedColumns: string[] = ['name', 'email', 'gender', 'phone', 'role', 'actions'];
+
   constructor(private userService: UserService, private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
-    this.readUser();
+    this.readUsers();
   }
 
-  //TODO: move from here!!!
-  readUser(): void {
-    const currentUser = this.tokenService.getUserFromToken();
-    this.userService.readByUsername(currentUser.userName).subscribe(response => {
+
+  readUsers(): void {
+    this.userService.read().subscribe((response: Response<any>) => {
+      if (response.success) {
+        this.users = response.data;
+      }
     });
   }
 

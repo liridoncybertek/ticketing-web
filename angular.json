@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap-4-grid/css/grid.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -91,6 +92,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap-4-grid/css/grid.min.css",
               "src/styles.scss"
             ],
             "scripts": []

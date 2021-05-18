@@ -7,6 +7,11 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {JwtInterceptor} from './shared/interceptors/jwt.interceptor';
 import { PageNotAllowedComponent } from './page-not-allowed/page-not-allowed.component';
+import {GuestRoutingModule} from './guest/guest-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,11 @@ import { PageNotAllowedComponent } from './page-not-allowed/page-not-allowed.com
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     {

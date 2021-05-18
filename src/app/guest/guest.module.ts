@@ -14,8 +14,8 @@ import {MatCardModule} from '@angular/material/card';
   declarations: [GuestComponent, LoginComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     GuestRoutingModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule
