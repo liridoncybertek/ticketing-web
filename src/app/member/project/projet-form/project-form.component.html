@@ -1,1 +1,56 @@
-<p>projet-form works!</p>
+<div class="container-xl mt-5">
+  <h2 class="text-left">{{isAddMode ? 'Create Project' : 'Edit Project'}}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row col-6">
+      <div class="row col-12">
+        <mat-form-field class="w-100">
+          <label for="projectName">Project Name</label>
+          <input type="text" matInput id="projectName" formControlName="projectName">
+        </mat-form-field>
+      </div>
+
+      <div class="row col-12">
+        <mat-form-field class="w-100">
+          <label for="projectCode">Project Code</label>
+          <input type="text" matInput id="projectCode" formControlName="projectCode">
+        </mat-form-field>
+      </div>
+      <div class="row col-12">
+        <div class="w-100 mb-2">
+          <label>Assigned Manager: </label>
+        </div>
+        <mat-select formControlName="assignedManager" placeholder="Please select">
+          <mat-option [value]="1">Liridon</mat-option>
+        </mat-select>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <label for="startDate">Start Date</label>
+            <input type="date" matInput id="startDate" formControlName="startDate">
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <label for="endDate">Start Date</label>
+            <input type="date" matInput id="endDate" formControlName="endDate">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row col-12">
+        <mat-form-field class="w-100">
+          <mat-label>Project Detail</mat-label>
+          <textarea matInput formControlName="projectDetail"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="button-wrap mt-5">
+        <button mat-raised-button>Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

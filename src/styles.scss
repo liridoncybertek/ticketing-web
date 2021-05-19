@@ -14,11 +14,27 @@ h1 {
   color: #ffff;
 }
 
+.main-wrapper {
+  padding-bottom: 50px;
+  .button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      background-color: #37C562;
+      border-color: #37C562;
+      color: #ffff;
+    }
+  }
+}
+
+
 .action-button {
   padding: 6px 15px;
   text-decoration: none;
   color: #ffff;
   border-radius: 5px;
+  cursor: pointer;
 
   &--edit {
     background-color: #ffc108;

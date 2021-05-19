@@ -50,8 +50,8 @@ export class TokenService {
     return this.jwtHelperInstance.isTokenExpired(token);
   }
 
-  public deleteTokens(...keys: string[]): void {
-    keys.forEach(key => localStorage.removeItem(key));
+  public deleteTokens(): void {
+    localStorage.removeItem(Constants.ACCESS_TOKEN);
   }
 
   public getUserFromToken(): User {

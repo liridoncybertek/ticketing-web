@@ -33,4 +33,10 @@ export class GatewayService<T = any> {
     return this.http.put<T>(endpoint, body, options);
   }
 
+  public delete({path, body, options}: Request): Observable<Response<T> | any> {
+
+    const endpoint = `${this.endpoint}/${environment.api}/${environment.apiVersion}${path}`;
+    return this.http.delete<T>(endpoint);
+  }
+
 }

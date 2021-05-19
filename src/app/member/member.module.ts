@@ -21,12 +21,19 @@ import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
+import { NavigationComponent } from './navigation/navigation.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
   declarations: [MemberComponent, ProjectComponent, TaskComponent, UserComponent,
     UserFormComponent, UserDetailsComponent, ProjectFormComponent, ProjectDetailsComponent,
-    TaskFormComponent, TaskDetailsComponent],
+    TaskFormComponent, TaskDetailsComponent, NavigationComponent],
   imports: [
     CommonModule,
     MemberRoutingModule,
@@ -38,7 +45,13 @@ import {MatTableModule} from '@angular/material/table';
     MatRadioModule,
     MatOptionModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,

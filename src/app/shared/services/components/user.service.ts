@@ -42,4 +42,12 @@ export class UserService {
     };
     return this.gatewayService.update(request);
   }
+
+  public delete(username: string): Observable<any> {
+    const request = {
+      path: `/user/${username}`,
+    };
+
+    return this.gatewayService.delete(request);
+  }
 }

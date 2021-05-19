@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       case 'Admin':
         this.router.navigateByUrl('/member/users');
         break;
-      case 'Manger':
+      case 'Manager':
         this.router.navigateByUrl('/member/projects');
         break;
       case 'Employee':

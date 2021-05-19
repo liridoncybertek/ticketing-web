@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <img src="assets/images/logo.svg" alt="Logo is here" height="45" width="170">
+    </mat-toolbar>
+    <mat-nav-list>
+      <div *ngFor="let menu of menuItems;">
+      <button mat-button [matMenuTriggerFor]="user" class="menu-button"> {{menu.menuName}}</button>
+      <mat-menu #user="matMenu">
+        <a mat-menu-item *ngFor="let sub of menu.subMenus" [routerLink]="sub.url">{{sub.name}}</a>
+      </mat-menu>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="top-nav-bar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="top-container mt-3">
+      <span >Ticketing Application</span>
+      <span> <a (click)="logout()" class="logout-button">Logout</a></span>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
