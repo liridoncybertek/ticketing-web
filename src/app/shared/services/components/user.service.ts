@@ -50,4 +50,15 @@ export class UserService {
 
     return this.gatewayService.delete(request);
   }
+
+  public readByRole(role: string): Observable<any> {
+
+    const request = {
+      path: '/user/role',
+      options: {params: {role}}
+    };
+
+    return this.gatewayService.read(request);
+
+  }
 }

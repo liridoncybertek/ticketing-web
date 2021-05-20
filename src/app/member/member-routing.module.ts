@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'project/edit/:id',
-        component: ProjectFormComponent,
+        component: ProjectComponent,
         data: {roles: ['Manager']},
         canActivate: [RoleGuard]
       },

@@ -27,7 +27,10 @@
       </button>
       <div class="top-container mt-3">
       <span >Ticketing Application</span>
-      <span> <a (click)="logout()" class="logout-button">Logout</a></span>
+        <button mat-button [matMenuTriggerFor]="user">{{currentUser?.firstName + ' ' + currentUser?.lastName}}</button>
+        <mat-menu #user="matMenu">
+          <a mat-menu-item (click)="logout()">Logout</a>
+        </mat-menu>
       </div>
     </mat-toolbar>
     <router-outlet></router-outlet>

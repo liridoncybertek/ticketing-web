@@ -24,6 +24,7 @@ export class GatewayService<T = any> {
 
   public read({path, options}: Request): Observable<Response<T> | any> {
     const endpoint = options && options.skipToken ? `${this.endpoint}${path}` : `${this.endpoint}/${environment.api}/${environment.apiVersion}${path}`;
+
     return this.http.get<T>(endpoint, options);
   }
 

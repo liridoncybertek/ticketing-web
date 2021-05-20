@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {TokenService} from '../../shared/services/general/token.service';
+import {User} from '../../shared/models/user';
 
 @Component({
   selector: 'app-navigation',
@@ -19,12 +20,18 @@ export class NavigationComponent {
     );
 
   menuItems = [
-    { menuName: 'Administration',  subMenus: [{ name: 'User Create', url: '/member/users' }, { name: 'Project Create', url: '/member/projects' }] },
-    { menuName: 'Manager', subMenus: [{ name: 'Project Status', url: '#' }, { name: 'Task Create', url: '/member/task/create' }] },
-    { menuName: 'Employee', subMenus: [{ name: 'Pending Tasks', url: '#' }, { name: 'Archive', url: '#' }] }
+    {
+      menuName: 'Administration',
+      subMenus: [{name: 'User Create', url: '/member/users'}, {name: 'Project Create', url: '/member/projects'}]
+    },
+    {menuName: 'Manager', subMenus: [{name: 'Project Status', url: '#'}, {name: 'Task Create', url: '/member/task/create'}]},
+    {menuName: 'Employee', subMenus: [{name: 'Pending Tasks', url: '#'}, {name: 'Archive', url: '#'}]}
   ];
 
+  currentUser: User;
+
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private tokenService: TokenService) {
+    this.currentUser = this.tokenService.getUserFromToken();
   }
 
   logout(): void {

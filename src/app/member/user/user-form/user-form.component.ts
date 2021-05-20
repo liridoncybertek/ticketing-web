@@ -5,6 +5,7 @@ import {UserService} from '../../../shared/services/components/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../../shared/models/user';
 import {Response} from '../../../shared/models/response';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
     {id: 3, name: 'Employee'}
   ];
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private location: Location) {
   }
 
 
@@ -91,7 +92,9 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
     const request = this.userService.updateUser(user).subscribe((response: Response<any>) => {
       if (response.success) {
+        this.form.reset();
         this.loadPage.emit();
+        this.location.go('/member/users');
       }
     });
 

@@ -11,7 +11,7 @@
 
           <mat-form-field class="w-100">
             <label for="userName">Username</label>
-            <input type="text" matInput id="userName" formControlName="userName">
+            <input type="text" matInput id="userName" formControlName="userName" [readonly]="!isAddMode">
           </mat-form-field>
 
           <mat-form-field class="w-100">

@@ -50,4 +50,12 @@ export class ProjectService {
 
     return this.gatewayService.delete(request);
   }
+
+  public complete(code: string): Observable<any> {
+    const request = {
+      path: `/project/complete/${code}`,
+    };
+
+    return this.gatewayService.update(request);
+  }
 }
