@@ -58,4 +58,13 @@ export class ProjectService {
 
     return this.gatewayService.update(request);
   }
+
+  public readWithDetails(): Observable<any> {
+
+    const request = {
+      path: '/project/details'
+    };
+
+    return this.gatewayService.read(request);
+  }
 }

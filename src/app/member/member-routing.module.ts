@@ -36,7 +36,7 @@ const routes: Routes = [
         canActivate: [RoleGuard]
       },
       {
-        path: 'project/details/:id',
+        path: 'project/details',
         component: ProjectDetailsComponent,
         data: {roles: ['Admin', 'Manager']},
         canActivate: [RoleGuard]

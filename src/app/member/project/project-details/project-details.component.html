@@ -1,1 +1,49 @@
-<p>project-details works!</p>
+<div class="main-wrapper">
+  <div class=" container mt-5">
+    <h2>List Projects</h2>
+
+    <table mat-table [dataSource]="projects" class="mat-elevation-z8 w-100">
+
+      <ng-container matColumnDef="projectCode">
+        <th mat-header-cell *matHeaderCellDef>Project Code</th>
+        <td mat-cell *matCellDef="let element"> {{element?.projectCode}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="projectName">
+        <th mat-header-cell *matHeaderCellDef>Project Name</th>
+        <td mat-cell *matCellDef="let element"> {{element?.projectName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="startEndDate">
+        <th mat-header-cell *matHeaderCellDef>Start - End Date</th>
+        <td mat-cell *matCellDef="let element"> {{element?.startDate | date: 'MM/dd/yyyy'}} - {{element?.endDate | date: 'MM/dd/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="manager">
+        <th mat-header-cell *matHeaderCellDef> Manager</th>
+        <td mat-cell *matCellDef="let element"> {{element?.assignedManager?.firstName + ' ' + element?.assignedManager?.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="taskStatus">
+        <th mat-header-cell *matHeaderCellDef> Unfinished/Completed</th>
+        <td mat-cell *matCellDef="let element"> {{element?.unfinishedTaskCounts + '/' +element?.completeTaskCounts}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status</th>
+        <td mat-cell *matCellDef="let element"> {{element?.projectStatus}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="onComplete(element?.projectCode)" class="action-button action-button--complete" [ngClass]="{'disabled': disableCompleteButton(element)}" [disabled]="disableCompleteButton(element)">Complete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>

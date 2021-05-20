@@ -56,10 +56,12 @@ export class ProjectComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.projectService.complete(projectCode).subscribe(response => {
+    const request = this.projectService.complete(projectCode).subscribe(response => {
       if (response.success) {
         this.readProjects();
       }
     });
+
+    this.subscription.add(request);
   }
 }

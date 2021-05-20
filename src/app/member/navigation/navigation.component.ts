@@ -24,7 +24,7 @@ export class NavigationComponent {
       menuName: 'Administration',
       subMenus: [{name: 'User Create', url: '/member/users'}, {name: 'Project Create', url: '/member/projects'}]
     },
-    {menuName: 'Manager', subMenus: [{name: 'Project Status', url: '#'}, {name: 'Task Create', url: '/member/task/create'}]},
+    {menuName: 'Manager', subMenus: [{name: 'Project Status', url: '/member/project/details'}, {name: 'Task Create', url: '/member/task/create'}]},
     {menuName: 'Employee', subMenus: [{name: 'Pending Tasks', url: '#'}, {name: 'Archive', url: '#'}]}
   ];
 
