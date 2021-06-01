@@ -55,8 +55,8 @@ const routes: Routes = [
       },
       {
         path: 'task/edit/:id',
-        component: TaskFormComponent,
-        data: {roles: ['Manager']},
+        component: TaskComponent,
+        data: {roles: ['Manager', 'Employee']},
         canActivate: [RoleGuard]
       },
       {

@@ -67,4 +67,12 @@ export class ProjectService {
 
     return this.gatewayService.read(request);
   }
+
+  public readNonCompletedProjects(): Observable<any> {
+    const request = {
+      path: '/project/non-completed'
+    };
+
+    return this.gatewayService.read(request);
+  }
 }

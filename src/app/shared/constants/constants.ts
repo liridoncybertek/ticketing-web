@@ -1,3 +1,4 @@
 export const Constants = {
-  ACCESS_TOKEN: 'token'
+  ACCESS_TOKEN: 'token',
+  dateFormatter: 'MM/dd/YYYY'
 };
