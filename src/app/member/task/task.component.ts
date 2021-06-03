@@ -43,6 +43,7 @@ export class TaskComponent implements OnInit, OnDestroy {
     }
 
     this.taskService.delete(id).subscribe(response => {
+      console.log(response);
       if (response.success) {
         this.readTasks();
       }

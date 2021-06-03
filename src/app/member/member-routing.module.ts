@@ -11,6 +11,8 @@ import {TaskFormComponent} from './task/task-form/task-form.component';
 import {UserFormComponent} from './user/user-form/user-form.component';
 import {AuthGuard} from '../shared/guards/auth.guard';
 import {UserDetailsComponent} from './user/user-details/user-details.component';
+import {EmployeeTaskComponent} from './employee/employee-task/employee-task.component';
+import {EmployeeArchiveComponent} from './employee/employee-archive/employee-archive.component';
 
 const routes: Routes = [
   {
@@ -60,9 +62,21 @@ const routes: Routes = [
         canActivate: [RoleGuard]
       },
       {
-        path: 'task/details/:id',
-        component: ProjectDetailsComponent,
-        data: {roles: ['Employee', 'Manager']},
+        path: 'task/edit/:id/:isEmployee',
+        component: TaskFormComponent,
+        data: {roles: ['Manager', 'Employee']},
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'task/employee',
+        component: EmployeeTaskComponent,
+        data: {roles: ['Employee']},
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'task/employee/archive',
+        component: EmployeeArchiveComponent,
+        data: {roles: ['Employee']},
         canActivate: [RoleGuard]
       },
       {
@@ -80,6 +94,11 @@ const routes: Routes = [
       {
         path: 'user/edit/:id',
         component: UserComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'user/settings/:id/:settings',
+        component: UserFormComponent,
         canActivate: [AuthGuard]
       },
       {

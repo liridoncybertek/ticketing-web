@@ -28,12 +28,16 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { EmployeeTaskComponent } from './employee/employee-task/employee-task.component';
+import { EmployeeArchiveComponent } from './employee/employee-archive/employee-archive.component';
+import {AccessMenuDirective} from '../shared/directives/access-menu.directive';
 
 
 @NgModule({
   declarations: [MemberComponent, ProjectComponent, TaskComponent, UserComponent,
     UserFormComponent, UserDetailsComponent, ProjectFormComponent, ProjectDetailsComponent,
-    TaskFormComponent, TaskDetailsComponent, NavigationComponent],
+    TaskFormComponent, TaskDetailsComponent, NavigationComponent, EmployeeTaskComponent,
+    EmployeeArchiveComponent, AccessMenuDirective],
   imports: [
     CommonModule,
     MemberRoutingModule,

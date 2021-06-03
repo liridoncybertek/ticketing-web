@@ -46,15 +46,15 @@
           <div class="w-100 mb-2">
             <label>Role: </label>
           </div>
-          <mat-select formControlName="role" placeholder="Please select">
+          <mat-select [compareWith]="setSelectedValue" formControlName="role" placeholder="Please select">
             <mat-option *ngFor="let role of roles" [value]="role">
               {{role.name}}
             </mat-option>
           </mat-select>
         </div>
       </div>
-      <div class="button-wrap mt-5">
-        <button mat-raised-button>Save</button>
+      <div class="button-wrap  mt-5 mb-5">
+        <button mat-raised-button class="action-button action-button--complete">{{isAddMode ? 'Save' : 'Update'}}</button>
       </div>
     </div>
 

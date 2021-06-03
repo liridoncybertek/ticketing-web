@@ -22,12 +22,28 @@ export class NavigationComponent {
   menuItems = [
     {
       menuName: 'Administration',
-      subMenus: [{name: 'User Create', url: '/member/users'}, {name: 'Project Create', url: '/member/projects'}]
+      allowedRoles: ['Admin', 'Manager'],
+      subMenus: [
+        {name: 'User Create', url: '/member/users', allowedRoles: ['Admin']},
+        {name: 'Project Create', url: '/member/projects', allowedRoles: ['Admin', 'Manager']}
+      ]
     },
-    { menuName: 'Manager',
-      subMenus: [{name: 'Project Status', url: '/member/project/details'}, {name: 'Task Create', url: '/member/tasks'}]
+    {
+      menuName: 'Manager',
+      allowedRoles: ['Manager'],
+      subMenus: [
+        {name: 'Project Status', url: '/member/project/details', allowedRoles: ['Manager']},
+        {name: 'Task Create', url: '/member/tasks', allowedRoles: ['Manager']}
+      ]
     },
-    {menuName: 'Employee', subMenus: [{name: 'Pending Tasks', url: '#'}, {name: 'Archive', url: '#'}]}
+    {
+      menuName: 'Employee',
+      allowedRoles: ['Employee'],
+      subMenus: [
+        {name: 'Pending Tasks', url: '/member/task/employee', allowedRoles: ['Employee']},
+        {name: 'Archive', url: '/member/task/employee/archive', allowedRoles: ['Employee']}
+      ]
+    }
   ];
 
   currentUser: User;

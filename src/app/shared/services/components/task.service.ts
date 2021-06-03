@@ -61,6 +61,14 @@ export class TaskService {
     return this.gatewayService.read(request);
   }
 
+  public readCompletedTasks(): Observable<any> {
+    const request = {
+      path: `/task/employee/archive`,
+    };
+
+    return this.gatewayService.read(request);
+  }
+
   public readAllByProjectManager(): Observable<any> {
     const request = {
       path: `/task/project-manager`,

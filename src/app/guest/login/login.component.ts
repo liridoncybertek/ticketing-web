@@ -5,6 +5,7 @@ import {AuthService} from '../../shared/services/components/auth.service';
 import {AuthenticationRequest} from '../../shared/models/authenticationRequest';
 import {TokenService} from '../../shared/services/general/token.service';
 import {Router} from '@angular/router';
+import {ToNavigate} from '../../shared/util/toNavigate';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     const user = this.form.value as AuthenticationRequest;
 
     this.subscription = this.authService.login(user).subscribe(response => {
-      this.toNavigate(response.data);
+      const navigationPath = ToNavigate.redirectDependsOnRole(this.tokenService.getRoleFromToken());
+      this.router.navigateByUrl(navigationPath);
     }, error => {
       this.router.navigateByUrl('guest');
     });
@@ -53,21 +55,5 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     this.login();
-  }
-
-  private toNavigate(token: string): void {
-    const roleFromToken = this.tokenService.getRoleFromToken();
-
-    switch (roleFromToken) {
-      case 'Admin':
-        this.router.navigateByUrl('/member/users');
-        break;
-      case 'Manager':
-        this.router.navigateByUrl('/member/projects');
-        break;
-      case 'Employee':
-        this.router.navigateByUrl('/member/tasks');
-        break;
-    }
   }
 }

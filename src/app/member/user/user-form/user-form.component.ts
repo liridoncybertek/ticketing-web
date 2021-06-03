@@ -2,10 +2,12 @@ import {Component, OnDestroy, OnInit, Output, EventEmitter} from '@angular/core'
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {UserService} from '../../../shared/services/components/user.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../shared/models/user';
 import {Response} from '../../../shared/models/response';
 import {Location} from '@angular/common';
+import {ToNavigate} from '../../../shared/util/toNavigate';
+import {TokenService} from '../../../shared/services/general/token.service';
 
 
 @Component({
@@ -21,6 +23,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   public isAddMode: boolean;
 
+  public isFromSettings: boolean;
+
   public username: string;
 
   @Output() loadPage = new EventEmitter<void>();
@@ -31,12 +35,14 @@ export class UserFormComponent implements OnInit, OnDestroy {
     {id: 3, name: 'Employee'}
   ];
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private location: Location) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute,
+              private location: Location, private router: Router, private tokenService: TokenService) {
   }
 
 
   ngOnInit(): void {
     this.username = this.activatedRoute.snapshot.params.id;
+    this.isFromSettings = this.activatedRoute.snapshot.params.settings;
     this.isAddMode = !this.username;
 
     this.initForm();
@@ -53,7 +59,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
       userName: new FormControl(null, [Validators.required]),
       passWord: new FormControl(null, [Validators.required]),
       confirmPassword: new FormControl(null, [Validators.required]),
-      enabled: new FormControl(false),
+      enabled: new FormControl(this.isAddMode ? false : null),
       phone: new FormControl(null),
       gender: new FormControl(null),
       role: new FormControl(null, [Validators.required]),
@@ -92,6 +98,10 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
     const request = this.userService.updateUser(user).subscribe((response: Response<any>) => {
       if (response.success) {
+        if (this.isFromSettings) {
+          const navigationPath = ToNavigate.redirectDependsOnRole(this.tokenService.getRoleFromToken());
+          this.router.navigateByUrl(navigationPath);
+        }
         this.form.reset();
         this.loadPage.emit();
         this.location.go('/member/users');
@@ -101,5 +111,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
     this.subscription.add(request);
   }
 
-
+  setSelectedValue(o1: User, o2: User): boolean {
+    return o1 && o2 && o1.id === o2.id;
+  }
 }

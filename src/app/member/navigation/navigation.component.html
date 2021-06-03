@@ -8,9 +8,9 @@
     </mat-toolbar>
     <mat-nav-list>
       <div *ngFor="let menu of menuItems;">
-      <button mat-button [matMenuTriggerFor]="user" class="menu-button"> {{menu.menuName}}</button>
+      <button mat-button [matMenuTriggerFor]="user" class="menu-button" [appAccessMenu]="menu.allowedRoles"> {{menu.menuName}}</button>
       <mat-menu #user="matMenu">
-        <a mat-menu-item *ngFor="let sub of menu.subMenus" [routerLink]="sub.url">{{sub.name}}</a>
+        <a mat-menu-item *ngFor="let sub of menu.subMenus" [routerLink]="sub.url" [appAccessMenu]="sub.allowedRoles">{{sub.name}}</a>
       </mat-menu>
       </div>
     </mat-nav-list>
@@ -29,6 +29,7 @@
       <span >Ticketing Application</span>
         <button mat-button [matMenuTriggerFor]="user">{{currentUser?.firstName + ' ' + currentUser?.lastName}}</button>
         <mat-menu #user="matMenu">
+          <a mat-menu-item [routerLink]="'/member/user/settings/' + currentUser.userName + '/true'">Settings</a>
           <a mat-menu-item (click)="logout()">Logout</a>
         </mat-menu>
       </div>

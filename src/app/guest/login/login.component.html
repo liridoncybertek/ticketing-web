@@ -1,14 +1,15 @@
 <div class="login guest__login">
   <div class="guest__form">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="img-wrapper">
+        <img src="assets/images/cybertek_logo.svg" alt="Logo is here" height="60" width="230">
+      </div>
       <div class="container-xl">
 
         <!-- Username or email -->
         <div class="row offset-xl-1 col-xl-10 col-12 mb-3">
-          <mat-form-field class="w-100">
-            <mat-label aria-label>
-              Username or Email
-            </mat-label>
+          <mat-form-field class="w-100 custom-width">
+            <label for="username-or-email">Username or Email:</label>
             <input type="text" matInput id="username-or-email" formControlName="username">
           </mat-form-field>
         </div>
@@ -16,14 +17,14 @@
         <!-- Password -->
         <div class="row offset-xl-1 col-xl-10 col-12 mb-3">
           <mat-form-field class="w-100">
-            <mat-label>Password</mat-label>
+            <label for="password">Password: </label>
             <input type="password" matInput id="password" formControlName="password">
           </mat-form-field>
         </div>
 
 
-        <div class="row offset-xl-1 col-xl-10 col-12 mb-5">
-          <button mat-raised-button class="w-100 color-primary" [disabled]="form.invalid">Login</button>
+        <div class="row offset-xl-1 col-xl-10 col-12 mb-5 mt-5">
+          <button mat-raised-button class="w-100 color-primary">Login</button>
         </div>
 
       </div>

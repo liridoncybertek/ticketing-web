@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TokenService} from '../shared/services/general/token.service';
+import {ToNavigate} from '../shared/util/toNavigate';
 
 @Component({
   selector: 'app-page-not-allowed',
@@ -9,27 +10,14 @@ import {TokenService} from '../shared/services/general/token.service';
 })
 export class PageNotAllowedComponent implements OnInit {
 
-  constructor(private router: Router, private tokenService: TokenService) { }
+  constructor(private router: Router, private tokenService: TokenService) {
+  }
 
   ngOnInit(): void {
   }
 
   public toNavigate(): void {
-    const roleFromToken = this.tokenService.getRoleFromToken();
-
-    switch (roleFromToken) {
-      case 'Admin':
-        this.router.navigateByUrl('/member/users');
-        break;
-      case 'Manger':
-        this.router.navigateByUrl('/member/projects');
-        break;
-      case 'Employee':
-        this.router.navigateByUrl('/member/tasks');
-        break;
-      default:
-        this.router.navigateByUrl('guest');
-
-    }
+    const navigationPath = ToNavigate.redirectDependsOnRole(this.tokenService.getRoleFromToken());
+    this.router.navigateByUrl(navigationPath);
   }
 }
