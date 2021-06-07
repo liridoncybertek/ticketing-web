@@ -8,10 +8,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 @NgModule({
-  declarations: [GuestComponent, LoginComponent],
+  declarations: [GuestComponent, LoginComponent, ConfirmationComponent],
   imports: [
     CommonModule,
     GuestRoutingModule,

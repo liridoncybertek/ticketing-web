@@ -30,4 +30,13 @@ export class AuthService {
       return response;
     }));
   }
+
+  public confirmation(token: string): Observable<any> {
+    const request = {
+      path: '/confirmation',
+      options: {params: {token}, skipToken: true}
+    };
+
+    return this.gatewayService.read(request);
+  }
 }

@@ -1,13 +1,12 @@
 import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 import {TokenService} from '../services/general/token.service';
-import {Role} from '../models/role';
 
 @Directive({
   selector: '[appAccessMenu]'
 })
 export class AccessMenuDirective implements OnInit {
 
-  @Input('appAccessMenu') appAccessMenu: any;
+  @Input() appAccessMenu: any;
   private role: string;
 
   constructor(private tokenService: TokenService, private elementRef: ElementRef) {

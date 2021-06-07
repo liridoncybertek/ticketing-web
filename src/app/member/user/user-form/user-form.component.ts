@@ -87,6 +87,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
     const request = this.userService.createUser(user).subscribe((response: Response<any>) => {
       if (response.success) {
         this.loadPage.emit();
+        this.form.reset();
       }
     });
 
